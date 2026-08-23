@@ -46,6 +46,7 @@ int main(int argc, char** argv) {
                 if (total_p2 == -1)
                 {
                     std::cout << "Part 2: " << index << '\n';                
+                    return 0;
                 }
             }
         }   
