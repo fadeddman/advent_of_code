@@ -1,0 +1,7 @@
+# Build artifacts
+bin/
+*.o
+*.out
+
+# Personal puzzle inputs (AoC asks that these not be shared/committed)
+**/input.txt
