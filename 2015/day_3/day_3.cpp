@@ -84,6 +84,42 @@ int main(int argc, char** argv) {
 
     // Part 2
     {
-        std::cout << "Part 2: " << 0 << '\n';
+        Point santa_2(0,0);
+        Point robot(0,0);
+        std::map<Point, int> delivered_2;
+        delivered_2[santa_2] = 1;
+        int total_visited_2 = 1;
+        unsigned long move_count = 0;
+        for (unsigned long i = 0; i < lines.size(); i++)
+        {
+            for (char c : lines[i])
+            {
+                Point& mover = (move_count % 2 == 0) ? santa_2 : robot;
+                switch (c){
+                    case '>':
+                        mover.goLeft();
+                        break;
+                    case '<':
+                        mover.goRight();
+                        break;
+                    case '^':
+                        mover.goUp();
+                        break;
+                    case 'v':
+                        mover.goDown();
+                        break;
+                    default:
+                        break;
+                }
+                move_count++;
+                if (!delivered_2.contains(mover))
+                {
+                    delivered_2[mover] = 1;
+                    total_visited_2++;
+                }
+            }
+        }
+
+        std::cout << "Part 2: " << total_visited_2 << '\n';
     }
 }
