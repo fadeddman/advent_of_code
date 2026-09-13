@@ -26,6 +26,9 @@ accepts.
 - `common/aoc.hpp` — header-only helpers shared across all days (`read_file`,
   `read_lines`, `split`). Add new shared utilities here rather than
   duplicating parsing code per day.
+- `common/md5.hpp` — header-only MD5 implementation (RFC 1321), no external
+  dependencies. `#include "md5.hpp"` and call `aoc::md5(str)` to get a
+  lowercase hex digest. Needed for puzzles like 2015 day 4.
 - `templates/day.cpp.tmpl` — scaffold for new solutions. `make new` copies
   this into `<year>/day_<n>/day_<n>.cpp`, substituting `{{YEAR}}`/`{{DAY}}`.
   Each solution's `main` takes an input file path as `argv[1]`, reads it via
