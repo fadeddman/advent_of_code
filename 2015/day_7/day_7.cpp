@@ -105,10 +105,18 @@ int main(int argc, char** argv) {
         
 
         std::cout << "Part 1: " << a << '\n';
+
+        rules["b"] = "3176";
+        cache.clear();
+
+        uint16_t b = get_value("a", rules["a"], rules, cache);
+
+
+        std::cout << "Part 2: " << b << '\n';
     }
 
     // Part 2
     {
-        std::cout << "Part 2: " << 0 << '\n';
+
     }
 }
