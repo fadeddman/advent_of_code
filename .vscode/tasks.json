@@ -1,0 +1,68 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "AoC: Run Current Day",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "-c",
+                "dir='${relativeFileDirname}'; year=${dir%%/*}; day=${dir##*day_}; make run YEAR=$year DAY=$day"
+            ],
+            "problemMatcher": ["$gcc"],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "clear": true
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "AoC: Build Current Day",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "-c",
+                "dir='${relativeFileDirname}'; year=${dir%%/*}; day=${dir##*day_}; make build YEAR=$year DAY=$day"
+            ],
+            "problemMatcher": ["$gcc"],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "clear": true
+            }
+        },
+        {
+            "label": "AoC: New Day",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "new",
+                "YEAR=${input:aocYear}",
+                "DAY=${input:aocDay}"
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "clear": true
+            }
+        }
+    ],
+    "inputs": [
+        {
+            "id": "aocYear",
+            "type": "promptString",
+            "description": "AoC year (e.g. 2015)",
+            "default": "2015"
+        },
+        {
+            "id": "aocDay",
+            "type": "promptString",
+            "description": "Day number (e.g. 8)"
+        }
+    ]
+}
