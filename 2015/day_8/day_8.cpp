@@ -47,6 +47,31 @@ std::string strip_string(std::string input_string)
     return to_return;
 }
 
+std::string expand_string(std::string input_string)
+{
+    std::string to_return;
+    to_return.push_back('"');
+    for (size_t i = 0; i < input_string.length(); i++)
+    {
+        if (input_string[i] == '"')
+        {
+            to_return.push_back('\\');
+            to_return.push_back('"');
+        }
+        else if (input_string[i] == '\\')
+        {
+            to_return.push_back('\\');
+            to_return.push_back('\\');
+        }
+        else
+        {
+            to_return.push_back(input_string[i]);
+        }
+    }
+    to_return.push_back('"');
+    return to_return;
+}
+
 int main(int argc, char **argv)
 {
     if (argc < 2)
@@ -73,6 +98,15 @@ int main(int argc, char **argv)
 
     // Part 2
     {
-        std::cout << "Part 2: " << 0 << '\n';
+        int initial_count = 0;
+        int second_count = 0;
+        std::vector<std::string> stripped;
+        // first count all characters in the file
+        for (auto s : lines)
+        {
+            initial_count += count_characters(s);
+            second_count += count_characters(expand_string(s));
+        }
+        std::cout << "Part 2: " << second_count - initial_count << '\n';
     }
 }
