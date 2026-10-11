@@ -86,8 +86,7 @@ int main(int argc, char **argv)
     {
         int initial_count = 0;
         int second_count = 0;
-        std::vector<std::string> stripped;
-        // first count all characters in the file
+
         for (auto s : lines)
         {
             initial_count += count_characters(s);
@@ -100,8 +99,7 @@ int main(int argc, char **argv)
     {
         int initial_count = 0;
         int second_count = 0;
-        std::vector<std::string> stripped;
-        // first count all characters in the file
+
         for (auto s : lines)
         {
             initial_count += count_characters(s);
